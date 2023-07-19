@@ -5,4 +5,5 @@ tensorflow
 keras
 sklearn
 scikit-learn
+dill
 # -e .
