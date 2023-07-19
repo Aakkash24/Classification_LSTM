@@ -3,4 +3,6 @@ numpy
 # pickle
 tensorflow
 keras
--e .
+sklearn
+scikit-learn
+# -e .
