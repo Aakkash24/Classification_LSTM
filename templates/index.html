@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Classification</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      input {
+        width: 200px;
+        margin: 10px;
+        border: 1px solid #ccc;
+      }
+
+      label {
+        font-size: 16px;
+      }
+
+      .classifier {
+        background-color: #eee;
+        padding: 10px;
+      }
+
+      .label {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text Classification</h1>
+    <form action="{{ url_for('predict')}}" method="post">
+      <label for="text">Enter text:</label>
+      <input type="text" name="text" id="text" />
+      <input type="submit" value="Classify" />
+    </form>
+    <div class="classifier">
+      <label class="label">Class:</label>
+      <span class="label"></span>
+      <h2>{{result}}</h2>
+    </div>
+  </body>
+</html>
