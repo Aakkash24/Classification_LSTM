@@ -1,1 +1,1 @@
-### Depolyment of Text Classification Project
+### Deployment of Text Classification Project
