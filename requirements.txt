@@ -7,4 +7,6 @@ sklearn
 scikit-learn
 dill
 Flask
+nltk
+gunicorn
 # -e .

@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import pickle
 import dill
+import keras
 from keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
@@ -18,18 +19,19 @@ def predict():
     if request.method == 'GET':
         return render_template('index.html')
     else:
-        pickle_in =  open("artifacts/bcc_classification.pkl","rb")
-        model = pickle.load(pickle_in)
+        model = keras.models.load_model('saved_model.keras')
         text = request.form.get('text')
-        tokenizer = Tokenizer(num_words=17727, filters='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~',lower=True)
-        tokenizer.fit_on_texts([text])
-        encoded_text = tokenizer.texts_to_sequences([text])[0]
-        encoded_text = pad_sequences([encoded_text],maxlen=3000)
+        with open("tokenizer.pkl", "rb") as handle:
+          tokenizer = pickle.load(handle) 
+        # print(tokenizer.texts_to_sequences(text))
+        print(text)
+        text = [text]
+        seq = tokenizer.texts_to_sequences(text)
+        padded = pad_sequences(seq, maxlen=3000)
+        pred = model.predict(padded)
         labels = ['Business','Entertainment','Politics','Sports','Tech']
-        predict = model.predict(encoded_text)
-        result = labels[np.argmax(predict)]
-        print(result)
-        return render_template('index.html',result=result)
+        # print(pred, labels[np.argmax(pred)])
+        return render_template('index.html',result=labels[np.argmax(pred)])
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",debug=True)

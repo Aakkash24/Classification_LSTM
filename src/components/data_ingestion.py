@@ -21,7 +21,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Entered the data ingestion method")
         try:
-            df = pd.read_csv("C:/Users/aakai/Downloads/AMZN.csv") # Df can be retrieved from any sources like MongoDB, etc
+            df = pd.read_csv("bbc-text.csv") # Df can be retrieved from any sources like MongoDB, etc
             logging.info("Data is retrieved")
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)

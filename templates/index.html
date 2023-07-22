@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Text Classification</title>
+    <title>Text Classification - LSTM Approach</title>
     <style>
       body {
         font-family: sans-serif;
         margin: 0;
         padding: 0;
+        text-align: center;
       }
 
       input {
@@ -27,13 +28,28 @@
       .label {
         font-size: 14px;
       }
+
+      h1 {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
     <h1>Text Classification</h1>
+    <p>Classification of text is based on:</p>
+    <ul>
+      <li>Technology</li>
+      <li>Business</li>
+      <li>Sports</li>
+      <li>Entertainment</li>
+      <li>Politics</li>
+    </ul>
     <form action="{{ url_for('predict')}}" method="post">
-      <label for="text">Enter text:</label>
-      <input type="text" name="text" id="text" />
+      <label for="text">Enter text:</label><br />
+      <!-- <input type="text" name="text" id="text" /> -->
+      <textarea rows="4" cols="50" name="text" placeholder="Enter">
+        Enter text here...</textarea
+      ><br />
       <input type="submit" value="Classify" />
     </form>
     <div class="classifier">
