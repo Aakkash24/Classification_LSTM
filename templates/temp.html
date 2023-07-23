@@ -115,6 +115,12 @@
           well-suited for text-related tasks like sentiment analysis, text
           classification, and language translation.
         </p>
+        <p>
+          On this page, you will find information about LSTM, the architecture
+          of the classification model, and how it can be trained on text data.
+          Additionally, we will showcase some example results and discuss the
+          significance of LSTM in modern NLP applications.
+        </p>
       </section>
       <!-- Add more sections for additional content -->
       <p>This model can classify text on categories like:</p>
@@ -128,7 +134,7 @@
       <form action="{{ url_for('predict')}}" method="post">
         <label for="text">Enter text:</label><br />
         <!-- <input type="text" name="text" id="text" /> -->
-        <textarea rows="4" cols="195" name="text" placeholder="Enter">
+        <textarea rows="4" cols="50" name="text" placeholder="Enter">
           Enter text here...</textarea
         ><br />
         <input type="submit" value="Classify" />
